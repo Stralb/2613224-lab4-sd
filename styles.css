@@ -1,0 +1,142 @@
+/* General reset for margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e3f2fd;
+    color: #444;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(135deg, #2196F3, #03A9F4);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+/* Main Content Styling */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Input Field and Button Styling */
+#country-input {
+    padding: 12px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 30px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+#country-input:focus {
+    border-color: #2196F3;
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.5);
+}
+
+#submit-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Section Styling */
+section {
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#country-info {
+    text-align: left;
+    font-size: 1.2em;
+    line-height: 1.8;
+    color: #333;
+}
+
+#bordering-countries {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+#bordering-countries div {
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+#bordering-countries div:hover {
+    transform: scale(1.1);
+}
+
+#bordering-countries img {
+    width: 70px;
+    height: 45px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2196F3;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 5px solid #03A9F4;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #country-input {
+        width: 90%;
+    }
+
+    #submit-btn {
+        width: 90%;
+    }
+}
