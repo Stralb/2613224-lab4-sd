@@ -5,18 +5,12 @@ const countryInfoSection = document.getElementById("country-info");
 const borderingCountriesSection = document.getElementById("bordering-countries");
 
 // Event listener for the submit button
-submitBtn.addEventListener("click", async function () {
+submitBtn.addEventListener("click", async function() {
     const countryName = countryInput.value.trim();  // Get the country name from the input field
 
     // Input validation: Check if the input is empty or contains only spaces
     if (!countryName) {
         alert("Please enter a country name!");
-        return;
-    }
-
-    // Check if the input is a number
-    if (!isNaN(countryName)) {
-        alert("Please enter a valid country name, not a number.");
         return;
     }
 
@@ -39,7 +33,7 @@ submitBtn.addEventListener("click", async function () {
 
 // Function to fetch country data from the API
 async function fetchCountryData(countryName) {
-    const apiUrl = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
+    const apiUrl = `https://restcountries.com/v3.1/name/${countryName}`;
 
     try {
         const response = await fetch(apiUrl);
@@ -62,10 +56,10 @@ function displayCountryInfo(country) {
     // Create and insert the HTML for country info into the DOM
     countryInfoSection.innerHTML = `
         <h2>${name.common}</h2>
-        <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 100px; height: auto; margin-bottom: 20px;">
         <p><strong>Capital:</strong> ${capital ? capital[0] : "N/A"}</p>
         <p><strong>Population:</strong> ${population.toLocaleString()}</p>
         <p><strong>Region:</strong> ${region}</p>
+        <p><strong>Flag:</strong> <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 100px; height: auto;"></p>
     `;
 }
 
@@ -127,6 +121,3 @@ function displayBorderingCountries(borderingCountries) {
         }
     });
 }
-
-}
-
