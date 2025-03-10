@@ -121,11 +121,12 @@ function displayBorderingCountries(borderingCountries) {
             const { name, flags } = country;
 
             borderElement.innerHTML = `
-                <p>${name.common}</p>
-                <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 70px; height: auto;">
+                <p>${name.common}: <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 70px; height: auto;"></p>
             `;
             borderingCountriesSection.appendChild(borderElement);
         }
     });
+}
+
 }
 
