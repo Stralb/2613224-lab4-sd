@@ -5,12 +5,18 @@ const countryInfoSection = document.getElementById("country-info");
 const borderingCountriesSection = document.getElementById("bordering-countries");
 
 // Event listener for the submit button
-submitBtn.addEventListener("click", async function() {
+submitBtn.addEventListener("click", async function () {
     const countryName = countryInput.value.trim();  // Get the country name from the input field
 
     // Input validation: Check if the input is empty or contains only spaces
     if (!countryName) {
         alert("Please enter a country name!");
+        return;
+    }
+
+    // Check if the input is a number
+    if (!isNaN(countryName)) {
+        alert("Please enter a valid country name, not a number.");
         return;
     }
 
@@ -33,7 +39,7 @@ submitBtn.addEventListener("click", async function() {
 
 // Function to fetch country data from the API
 async function fetchCountryData(countryName) {
-    const apiUrl = `https://restcountries.com/v3.1/name/${countryName}`;
+    const apiUrl = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
 
     try {
         const response = await fetch(apiUrl);
@@ -122,3 +128,4 @@ function displayBorderingCountries(borderingCountries) {
         }
     });
 }
+
