@@ -61,9 +61,9 @@ main {
     padding: 20px;
 }
 
-#bordering-countries h3 {
+#country-info h2, #bordering-countries h3 {
+    font-size: 1.8em;  /* Ensure the headings are aligned */
     margin-bottom: 10px;
-    font-size: 1.5em;
 }
 
 #bordering-countries div {
@@ -106,4 +106,3 @@ footer {
     color: red;
     font-size: 16px;
 }
-

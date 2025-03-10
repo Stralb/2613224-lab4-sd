@@ -27,7 +27,9 @@ submitBtn.addEventListener("click", async function() {
     } catch (error) {
         // Graceful error handling: show user-friendly error message
         if (error.message.includes("Country not found")) {
-            countryInfoSection.innerHTML = `<p class="error-number">Error: Please enter a valid country name, not a number!</p>`;
+            countryInfoSection.innerHTML = `<p class="error-message">Error: Country not found. Please enter a valid country name.</p>`;
+        } else if (error.message.includes("Invalid input")) {
+            countryInfoSection.innerHTML = `<p class="error-message">Error: Please enter a valid country name, not a number!</p>`;
         } else {
             countryInfoSection.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
         }
@@ -105,7 +107,7 @@ async function fetchBorderCountryData(borderCode) {
 // Function to display the neighboring countries
 function displayBorderingCountries(borderingCountries) {
     if (borderingCountries.length === 0) {
-        borderingCountriesSection.innerHTML = "<p>No bordering countries.</p>";
+        borderingCountriesSection.innerHTML = "<h3>Bordering Countries</h3><p>No bordering countries.</p>";
         return;
     }
 
