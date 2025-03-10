@@ -8,9 +8,15 @@ const borderingCountriesSection = document.getElementById("bordering-countries")
 submitBtn.addEventListener("click", async function() {
     const countryName = countryInput.value.trim();  // Get the country name from the input field
 
-    // Input validation: Check if the input is empty or contains only spaces
+    // Input validation: Check if the input is empty, contains only spaces, or is a number
     if (!countryName) {
         alert("Please enter a country name!");
+        return;
+    }
+
+    if (!isNaN(countryName)) {
+        countryInfoSection.innerHTML = `<p class="error-number">Please enter a valid country name, not a number.</p>`;
+        borderingCountriesSection.innerHTML = "";  // Clear bordering countries section on error
         return;
     }
 
@@ -115,7 +121,7 @@ function displayBorderingCountries(borderingCountries) {
             const { name, flags } = country;
 
             borderElement.innerHTML = `
-                <p>${name.common}: <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 70px; height: auto;"></p>
+                <p>${name.common}: <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 50px; height: auto;"></p>
             `;
             borderingCountriesSection.appendChild(borderElement);
         }
