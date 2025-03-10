@@ -50,6 +50,7 @@ main {
 #country-info, #bordering-countries {
     margin-top: 20px;
     text-align: left;
+    display: none; /* Initially hide both sections */
 }
 
 #country-info p, #bordering-countries p {
@@ -57,28 +58,38 @@ main {
     margin-bottom: 10px;
 }
 
+#country-info {
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+#country-info h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
 #bordering-countries {
     padding: 20px;
+    border: 1px solid #ddd;
+    background-color: white;
 }
 
 #bordering-countries h3 {
-    margin-bottom: 10px;
-    font-size: 1.5em;
-}
-
-#bordering-countries div {
-    margin: 10px 0;
+    margin-bottom: 15px;
+    font-size: 1.8em;
 }
 
 /* Flexbox for aligning country flags and text */
 #bordering-countries p {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px; /* Increase the gap between the country name and flag */
 }
 
 #bordering-countries img {
-    width: 50px;
+    width: 40px;
     height: auto;
 }
 
@@ -100,3 +111,9 @@ footer {
     color: red;
     font-size: 16px;
 }
+
+/* Section Titles */
+#country-info h2, #bordering-countries h3 {
+    color: #007BFF; /* Make the section titles blue */
+}
+
