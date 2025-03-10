@@ -8,24 +8,27 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-
 <header>
     <h1>Welcome to Arno's Country Info Lab</h1>
 </header>
 
 <main>
-    <!-- Input field to enter the country name -->
-    <input type="text" id="country-input" placeholder="Enter country name" />
-    <button id="submit-btn">Get Country Info</button>
+    <!-- Input field and button for submitting country name -->
+    <div>
+        <input type="text" id="country-input" placeholder="Enter country name" />
+        <button id="submit-btn">Get Country Info</button>
+    </div>
 
-    <!-- Section to display the country information -->
+    <!-- Section to display country information -->
     <section id="country-info">
-        <!-- Country info like Capital, Population, Region, Flag will be displayed here -->
+        <h2>Country Information</h2>
+        <!-- The country info will be dynamically inserted here -->
     </section>
 
-    <!-- Section to display bordering countries and their flags -->
+    <!-- Section to display bordering countries -->
     <section id="bordering-countries">
-        <!-- List of neighboring countries and their flags will be displayed here -->
+        <h2>Bordering Countries</h2>
+        <!-- Bordering countries info will be dynamically inserted here -->
     </section>
 </main>
 

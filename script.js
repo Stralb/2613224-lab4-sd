@@ -4,25 +4,31 @@ const submitBtn = document.getElementById("submit-btn");
 const countryInfoSection = document.getElementById("country-info");
 const borderingCountriesSection = document.getElementById("bordering-countries");
 
+// Initially hide both sections
+countryInfoSection.style.display = "none";
+borderingCountriesSection.style.display = "none";
+
 // Event listener for the submit button
 submitBtn.addEventListener("click", async function() {
     const countryName = countryInput.value.trim();  // Get the country name from the input field
 
-    // Input validation: Check if the input is empty, contains only spaces, or is a number
+    // Input validation: Check if the input is empty or contains only spaces
     if (!countryName) {
         alert("Please enter a country name!");
         return;
     }
 
+    // Check if the input is a number (invalid for country names)
     if (!isNaN(countryName)) {
-        countryInfoSection.innerHTML = `<p class="error-number">Please enter a valid country name, not a number.</p>`;
-        borderingCountriesSection.innerHTML = "";  // Clear bordering countries section on error
+        alert("Please enter a valid country name, not a number.");
         return;
     }
 
-    // Clear previous results
-    countryInfoSection.innerHTML = "";
-    borderingCountriesSection.innerHTML = "";
+    // Clear previous results and hide sections
+    countryInfoSection.innerHTML = ""; // Reset country info
+    borderingCountriesSection.innerHTML = ""; // Reset bordering countries
+    countryInfoSection.style.display = "none";
+    borderingCountriesSection.style.display = "none";
 
     try {
         // Fetch and display country data using async/await
@@ -30,10 +36,18 @@ submitBtn.addEventListener("click", async function() {
         displayCountryInfo(country);
         const borderingCountries = await fetchBorderingCountries(country.borders);
         displayBorderingCountries(borderingCountries);
+
+        // Show sections when data is fetched successfully
+        countryInfoSection.style.display = "block";
+        borderingCountriesSection.style.display = "block";
     } catch (error) {
         // Graceful error handling: show user-friendly error message
         countryInfoSection.innerHTML = `<p class="error-message">Error: ${error.message}</p>`;
         borderingCountriesSection.innerHTML = "";  // Clear bordering countries section on error
+
+        // Hide sections when there's an error
+        countryInfoSection.style.display = "none";
+        borderingCountriesSection.style.display = "none";
     }
 });
 
@@ -61,11 +75,11 @@ function displayCountryInfo(country) {
 
     // Create and insert the HTML for country info into the DOM
     countryInfoSection.innerHTML = `
-        <h2>${name.common}</h2>
+        <h2>Country Information</h2>
         <p><strong>Capital:</strong> ${capital ? capital[0] : "N/A"}</p>
         <p><strong>Population:</strong> ${population.toLocaleString()}</p>
         <p><strong>Region:</strong> ${region}</p>
-        <p><strong>Flag:</strong> <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 100px; height: auto;"></p>
+        <p><strong>Flag:</strong> <img src="${flags.svg}" alt="Flag of ${name.common}" style="width: 50px; height: auto;"></p>
     `;
 }
 
@@ -107,12 +121,9 @@ async function fetchBorderCountryData(borderCode) {
 // Function to display the neighboring countries
 function displayBorderingCountries(borderingCountries) {
     if (borderingCountries.length === 0) {
-        borderingCountriesSection.innerHTML = "<p>No bordering countries.</p>";
+        borderingCountriesSection.innerHTML += "<p>No bordering countries.</p>";
         return;
     }
-
-    // Clear previous bordering country data
-    borderingCountriesSection.innerHTML = "<h3>Bordering Countries:</h3>";
 
     // Loop through each bordering country and append to the DOM
     borderingCountries.forEach(country => {
